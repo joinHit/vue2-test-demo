@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`edit todo snapshot 1`] = `
+<li data-testid="todo-item" class="completed editing">
+  <div class="view"><input type="checkbox" data-testid="todo-done" class="toggle"> <label data-testid="todo-text">eat</label> <button data-testid="delete-todo" class="destroy"></button></div> <input data-testid="todo-edit" class="edit">
+</li>
+`;

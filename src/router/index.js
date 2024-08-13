@@ -1,27 +1,32 @@
+import indexComponent from '@/components/TodoApp/indexComponent.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  // 新增的路由
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: indexComponent
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/active',
+    component: indexComponent
+  },
+  {
+    path: '/completed',
+    component: indexComponent
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  /**
+   * linkActiveClass 是模糊匹配
+   * linkExactActiveClass 是精准匹配
+   */
+  linkActiveClass: 'selected'
 })
 
 export default router
