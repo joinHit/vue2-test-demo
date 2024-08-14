@@ -1,62 +1,36 @@
-# 流程的名字（可以随便起，最好有意义）
 name: Publish And Deploy Demo
 
-# 当满足下面的任意一个条件时，就可以触发 "当前文件的jobs"，进行工作
 on:
-  # 当你 push 到 "master分支" 时（即：使用 git push origin master）
   push:
     branches:
       - master
-  # 当你提 M.R. 到 "master分支" 时
-  # 如果会出现 M.R.，可以这样写；如果没有 M.R.，可以删除该配置
-  pull_request:
-    branches:
-      - master
+	pull_request:
+  	branches:
+    	- master
 
-# 具体的工作流程
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # 运行在 "ubuntu 环境" 中
+    runs-on: ubuntu-latest
     steps:
-      # 运用（别人已经写好的）"actions/checkout@master" 仓库
-      # 它的作用：下载源代码（到 "actions/checkout@master 仓库" 里面）。
-      # 即：将 "github 官网里的 vue2-test-demo1项目" 的代码，下载到 "测试集成（actions/checkout@master 仓库）" 的环境当中
       - name: Checkout
         uses: actions/checkout@master
 
-      # 安装依赖 & 运行测试并生成覆盖率报告 & 项目打包
+			# 安装依赖 & 运行测试并生成覆盖率报告 & 项目打包
       - name: Install and Build
         run: |
-# 安装依赖
           npm install
-          # 运行 测试
-          # 其实，运行的是 "（项目里面的）根目录/package.json 文件" ，里面有个 scripts对象，对象里含有 "coverage": "vue-cli-service test:unit --coverage" 命令行）
           npm run coverage
-          # 构建项目 
-          # 如果 "前面的测试（命令）" 不通过，就不会执行 npm run build，而且会给你发一封邮件，告诉你，自动运行的失败了、哪处失败 等等
           npm run build
-
-      # 构建成功后，通常情况下，我们就要把 "构建出来的包" 部署到网站上（发布到网站上）
-      # 发布到 GitHub Pages（此处，我们这边把 "构建包" 发布到 "GitHub Pages（页面托管系统）"当中）
-      # 备注： "GitHub Pages" 是 "github 官网" 提供的 "内部网站"，
+			
+      # 发布到 GitHub Pages
       - name: Deploy
-        # 我们使用的 "github-pages-deploy-action" 来发布到 "GitHub Pages" 网站中
-        # 备注： "github-pages-deploy-action"，也是别人已经写好的 action，我们直接拿来用即可
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          # 把 "gh-pages 分支" 部署到 "GitHub Pages（页面托管系统）" 网站中
           branch: gh-pages # The branch the action should deploy to.
-          # 我们在前面运行了 npm run build，会生成一个 "dist 文件夹" 的构建包
-          # 这句话的意思是：把 "dist 目录" 推送到 "当前项目的 gh-pages分支" 上
           folder: dist # The folder the action should deploy.
 
-      # 上传测试覆盖率报告到 codecov
-      # 即：更新测试覆盖率报告
+			# 上传测试覆盖率报告到 codecov
       - name: codecov
-        # "codecov 官方" 提供的 1个action（名字叫：codecov-action）
         uses: codecov/codecov-action@v1
         with:
-          # 上传覆盖率报告，需要有token，但不要把 "真实的token" 写在此处
-          # 因为会涉及到安全，token会泄露，所以此处使用 "环境变量" 的方式，进行配置
-          # 至于怎么设置 secrets.CODECOV_TOKEN 的值，可以查看 "附录1"
           token: ${{ secrets.CODECOV_TOKEN }}
