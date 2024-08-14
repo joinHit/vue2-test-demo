@@ -1,7 +1,5 @@
 # vue2-test-demo1
 
-[![codecov](https://codecov.io/gh/joinHit/vue2-test-demo/graph/badge.svg?token=FAHWY6ASQA)](https://codecov.io/gh/joinHit/vue2-test-demo)
-
 ## Project setup
 
 ```
