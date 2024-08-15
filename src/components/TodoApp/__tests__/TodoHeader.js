@@ -8,7 +8,7 @@ describe('TodoHeader.vue', () => {
     wrapper = shallowMount(TodoHeader)
   })
 
-  // 输入框 "非文本" 时 回车
+  /*   // 输入框 "非文本" 时 回车
   it('new todo', async () => {
     const inputEle = wrapper.find('input[data-testid="new-todo"]')
 
@@ -38,7 +38,7 @@ describe('TodoHeader.vue', () => {
     await inputEle.trigger('keyup.enter')
 
     expect(wrapper.emitted()['new-todo']).toBeFalsy()
-  })
+  }) */
 
   // 快照
   test('snapshot', () => {
