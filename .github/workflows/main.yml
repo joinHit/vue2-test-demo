@@ -28,8 +28,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
-          npm-version: '6.x'
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
 
       # 安装依赖 & 运行测试并生成覆盖率报告 & 项目打包
       - name: Install and Build
