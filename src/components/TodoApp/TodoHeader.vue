@@ -17,14 +17,12 @@ export default {
   methods: {
     handleNewTodo(e) {
       const value = e.target.value.trim()
-
       // 没有输入内容（就回车），应该被拦截
-      if (!value.length) {
+      if (value.length === 0) {
         return
       }
 
       this.$emit('new-todo', value)
-
       e.target.value = ''
     }
   }
