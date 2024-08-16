@@ -60,4 +60,5 @@ jobs:
           # 至于怎么设置 secrets.CODECOV_TOKEN 的值，可以查看 "附录1"
           token: ${{ secrets.CODECOV_TOKEN }}
           # 从哪里读取覆盖率数据
-          file: ../../coverage/clover.xml
+          file: ./coverage/clover.xml
+          fail_ci_if_error: true
