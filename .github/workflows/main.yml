@@ -59,3 +59,5 @@ jobs:
           # 因为会涉及到安全，token会泄露，所以此处使用 "环境变量" 的方式，进行配置
           # 至于怎么设置 secrets.CODECOV_TOKEN 的值，可以查看 "附录1"
           token: ${{ secrets.CODECOV_TOKEN }}
+          # 从哪里读取覆盖率数据
+          file: ../../coverage/clover.xml
