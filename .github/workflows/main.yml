@@ -28,6 +28,7 @@ jobs:
       - name: Install and Build
         run: |
           npm install --legacy-peer-deps # 安装依赖
+          npm audit fix
           npm audit fix --force
           # 运行 测试
           # 其实，运行的是 "（项目里面的）根目录/package.json 文件" ，里面有个 scripts对象，对象里含有 "coverage": "vue-cli-service test:unit --coverage" 命令行）
