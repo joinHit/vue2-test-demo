@@ -7,11 +7,6 @@ on:
   push:
     branches:
       - master
-  # 当你提 M.R. 到 "master分支" 时
-  # 如果会出现 M.R.，可以这样写；如果没有 M.R.，可以删除该配置
-  pull_request:
-    branches:
-      - master
 
 # 具体的工作流程
 jobs:
@@ -22,7 +17,7 @@ jobs:
       # 它的作用：下载源代码（到 "actions/checkout@master 仓库" 里面）。
       # 即：将 "github 官网里的 vue2-test-demo1项目" 的代码，下载到 "测试集成（actions/checkout@master 仓库）" 的环境当中
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       # 设置 "node版本" 和 "npm版本"
       - name: Use Node.js
