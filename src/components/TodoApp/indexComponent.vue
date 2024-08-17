@@ -44,23 +44,24 @@ export default {
     TodoItem
   },
   data() {
-    const todoList = [
-      {
-        id: 0,
-        text: '00',
-        done: false
-      },
-      {
-        id: 1,
-        text: '01',
-        done: true
-      },
-      {
-        id: 2,
-        text: '02',
-        done: false
-      }
-    ]
+    // const todoList = [
+    //   {
+    //     id: 0,
+    //     text: '00',
+    //     done: false
+    //   },
+    //   {
+    //     id: 1,
+    //     text: '01',
+    //     done: true
+    //   },
+    //   {
+    //     id: 2,
+    //     text: '02',
+    //     done: false
+    //   }
+    // ]
+    const todoList = []
 
     return {
       // 下拉列表
