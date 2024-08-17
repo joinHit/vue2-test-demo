@@ -7,6 +7,11 @@ on:
   push:
     branches:
       - master
+  # 当你提 M.R. 到 "master分支" 时
+  # 如果会出现 M.R.，可以这样写；如果没有 M.R.，可以删除该配置
+  pull_request:
+    branches:
+      - master
 
 # 具体的工作流程
 jobs:
@@ -16,14 +21,17 @@ jobs:
       # 运用（别人已经写好的）"actions/checkout@master" 仓库
       # 它的作用：下载源代码（到 "actions/checkout@master 仓库" 里面）。
       # 即：将 "github 官网里的 vue2-test-demo1项目" 的代码，下载到 "测试集成（actions/checkout@master 仓库）" 的环境当中
+      # actions/checkout的介绍： https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # 设置 "node版本" 和 "npm版本"
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
       # 全局安装 yarn
@@ -67,4 +75,5 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           # 从哪里读取覆盖率数据
           file: ./coverage/clover.xml
+          # 失败时中断 "该工作流的步骤"
           fail_ci_if_error: true
