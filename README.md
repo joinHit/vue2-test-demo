@@ -1,6 +1,10 @@
 # vue2-test-demo1
 
-[![codecov](https://codecov.io/gh/joinHit/vue2-test-demo/graph/badge.svg?token=FAHWY6ASQA)](https://codecov.io/gh/joinHit/vue2-test-demo)
+> 展示 codecov 徽章
+> [![codecov](https://codecov.io/gh/joinHit/vue2-test-demo/graph/badge.svg?token=FAHWY6ASQA)](https://codecov.io/gh/joinHit/vue2-test-demo)
+
+> 展示 GitHub Actions 徽章
+> ![](https://github.com/joinHit/vue2-test-demo/workflows/Publish%20And%20Deploy%20Demo/badge.svg)
 
 ## Project setup
 
